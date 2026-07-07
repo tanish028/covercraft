@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "CoverCraft",
+  "version": "1.0.0",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "covercraft@tanish.dev",
+      "strict_min_version": "109.0"
+    }
+  },
+  "description": "Generate targeted cover letters from any job listing in one click.",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": [
+    "https://www.linkedin.com/*",
+    "https://internshala.com/*",
+    "https://wellfound.com/*",
+    "https://angel.co/*",
+    "https://www.naukri.com/*",
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "CoverCraft"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/jobs/view/*",
+        "https://internshala.com/internship/*",
+        "https://internshala.com/jobs/*",
+        "https://wellfound.com/jobs/*",
+        "https://angel.co/company/*/jobs/*",
+        "https://www.naukri.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
